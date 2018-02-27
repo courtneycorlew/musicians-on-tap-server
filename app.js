@@ -2,6 +2,7 @@ require('dotenv').config();
 
 var express = require('express');
 var app = express();
+var http = require('http').Server(app);
 var bodyParser = require('body-parser');
 var sequelize = require('./db');
 
@@ -24,8 +25,8 @@ app.use('/api/videos', require('./routes/videos'));
 
 
 
-app.listen(3001, function(){
-	console.log('App is listening on 3001.')
+http.listen(process.env.PORT || 3001, function(){
+	console.log('App is listening on port 3001.')
 });
 
 
